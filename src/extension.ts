@@ -52,9 +52,11 @@ class ResMon {
             stats.push(freq);
         }
         if (config.get('showmem', true)) {
-            var memDivisor = MemMappings[config.get('memunit', "GB")];
+            var memDivisor = MemMappings[config.get("memunit", "GB")];
+            const showBuffAndCache = config.get("membuffcache", true);
+            const memUsed = showBuffAndCache ? "used" : "active";
             let mem = si.mem().then(
-                (data : any) => { return  `$(ellipsis) ${(data.used/memDivisor).toFixed(2)}/${(data.total/memDivisor).toFixed(2)} GB`; }
+                (data : any) => { return  `$(ellipsis) ${(data[memUsed]/memDivisor).toFixed(2)}/${(data.total/memDivisor).toFixed(2)} GB`; }
             );
             stats.push(mem);
         }
