@@ -69,6 +69,11 @@
                         "B"
                     ],
                     "default": "GB"
+                },
+                "resmon.membuffcache": {
+                    "type": "boolean",
+                    "default": "false",
+                    "description": "Toggles the inclusion of buffers & cache in the figure displayed for used memory."
                 }
             }
         }
